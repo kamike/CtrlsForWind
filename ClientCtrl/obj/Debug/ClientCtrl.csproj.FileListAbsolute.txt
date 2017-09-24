@@ -1,0 +1,10 @@
+D:\visual_studio_windows\workspace_\ClientCtrl\ClientCtrl\bin\Debug\ClientCtrl.exe.config
+D:\visual_studio_windows\workspace_\ClientCtrl\ClientCtrl\bin\Debug\ClientCtrl.exe
+D:\visual_studio_windows\workspace_\ClientCtrl\ClientCtrl\bin\Debug\ClientCtrl.pdb
+D:\visual_studio_windows\workspace_\ClientCtrl\ClientCtrl\obj\Debug\ClientCtrl.csprojResolveAssemblyReference.cache
+D:\visual_studio_windows\workspace_\ClientCtrl\ClientCtrl\obj\Debug\ClientCtrl.Form1.resources
+D:\visual_studio_windows\workspace_\ClientCtrl\ClientCtrl\obj\Debug\ClientCtrl.Properties.Resources.resources
+D:\visual_studio_windows\workspace_\ClientCtrl\ClientCtrl\obj\Debug\ClientCtrl.csproj.GenerateResource.Cache
+D:\visual_studio_windows\workspace_\ClientCtrl\ClientCtrl\obj\Debug\ClientCtrl.csproj.CoreCompileInputs.cache
+D:\visual_studio_windows\workspace_\ClientCtrl\ClientCtrl\obj\Debug\ClientCtrl.exe
+D:\visual_studio_windows\workspace_\ClientCtrl\ClientCtrl\obj\Debug\ClientCtrl.pdb
