@@ -1,6 +1,6 @@
 ﻿namespace ClientCtrl
 {
-    partial class Form1
+    partial class FormMain
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -40,15 +40,21 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.listBox_log = new System.Windows.Forms.ListBox();
             this.textBox_host = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.dataGridView_apps = new System.Windows.Forms.DataGridView();
+            this.Column7 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_apps)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -67,8 +73,9 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 36);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(641, 712);
+            this.dataGridView1.Size = new System.Drawing.Size(678, 712);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
@@ -157,29 +164,6 @@
             this.checkBox1.Text = "是否拦截";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Items.AddRange(new object[] {
-            "已安装App列表1111",
-            "已安装App列表22222",
-            "已安装App列表3333",
-            "已安装App列表4444444",
-            "已安装App列表1111",
-            "已安装App列表22222",
-            "已安装App列表3333",
-            "已安装App列表4444444",
-            "已安装App列表1111",
-            "已安装App列表22222",
-            "已安装App列表3333",
-            "已安装App列表4444444"});
-            this.listBox1.Location = new System.Drawing.Point(1017, 298);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(144, 256);
-            this.listBox1.TabIndex = 4;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            // 
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
@@ -190,7 +174,7 @@
             "短信1111111111"});
             this.listBox2.Location = new System.Drawing.Point(709, 559);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(434, 184);
+            this.listBox2.Size = new System.Drawing.Size(719, 184);
             this.listBox2.TabIndex = 5;
             // 
             // listBox3
@@ -206,7 +190,7 @@
             "备注信息：xxx"});
             this.listBox3.Location = new System.Drawing.Point(1017, 58);
             this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(144, 220);
+            this.listBox3.Size = new System.Drawing.Size(411, 148);
             this.listBox3.TabIndex = 6;
             // 
             // listBox_log
@@ -235,17 +219,67 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "本机ip：";
             // 
+            // dataGridView_apps
+            // 
+            this.dataGridView_apps.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_apps.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column7,
+            this.Column8,
+            this.Column9,
+            this.Column10,
+            this.Column11});
+            this.dataGridView_apps.Location = new System.Drawing.Point(1018, 212);
+            this.dataGridView_apps.Name = "dataGridView_apps";
+            this.dataGridView_apps.RowHeadersVisible = false;
+            this.dataGridView_apps.RowTemplate.Height = 23;
+            this.dataGridView_apps.Size = new System.Drawing.Size(410, 341);
+            this.dataGridView_apps.TabIndex = 12;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Icon";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "名称";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "系统应用";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "包名";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "版本号";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1295, 839);
+            this.ClientSize = new System.Drawing.Size(1440, 839);
+            this.Controls.Add(this.dataGridView_apps);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox_host);
             this.Controls.Add(this.listBox_log);
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
@@ -256,6 +290,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_apps)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,7 +308,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -281,6 +315,12 @@
         private System.Windows.Forms.TextBox textBox_host;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listBox4;
+        private System.Windows.Forms.DataGridView dataGridView_apps;
+        private System.Windows.Forms.DataGridViewImageColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
     }
 }
 

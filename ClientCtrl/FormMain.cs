@@ -15,9 +15,9 @@ using System.Windows.Forms;
 
 namespace ClientCtrl
 {
-    public partial class Form1 : Form
+    public partial class FormMain : Form
     {
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
         }
@@ -96,7 +96,8 @@ namespace ClientCtrl
 
                 }
                 ClientInfoBean clientInfo= AllUtils.jsonToObj(sb.ToString(), typeof(ClientInfoBean)) as ClientInfoBean;
-                MessageBox.Show(clientInfo.deviceId);
+                UIAppList.updataAppsData(this.dataGridView_apps, clientInfo.appList);
+                
 
                 return;
             }
