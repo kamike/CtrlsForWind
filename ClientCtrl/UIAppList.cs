@@ -33,5 +33,27 @@ namespace ClientCtrl
 
 
         }
+
+        internal static void updataPhoneInfo(ListBox listBox, ClientInfoBean clientInfo)
+        {
+            if (listBox.Items.Count > 0)
+            {
+                //清空所有项
+                listBox.Items.Clear();
+            }
+            if (clientInfo == null)
+            {
+                return;
+
+
+            }
+            listBox.Items.Add("设备标识：" + clientInfo.deviceId);
+            listBox.Items.Add("备注：" + clientInfo.alias);
+            listBox.Items.Add("手机型号：" + clientInfo.phoneModle);
+            listBox.Items.Add("系统版本：" + clientInfo.androidVersion);
+            listBox.Items.Add("屏幕分辨率：" + clientInfo.screenSize);
+            listBox.Items.Add("系统版本：" + clientInfo.androidVersion);
+            listBox.Items.Add("地址：" + clientInfo.address);
+        }
     }
 }

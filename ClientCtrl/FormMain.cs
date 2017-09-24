@@ -97,7 +97,7 @@ namespace ClientCtrl
                 }
                 ClientInfoBean clientInfo= AllUtils.jsonToObj(sb.ToString(), typeof(ClientInfoBean)) as ClientInfoBean;
                 UIAppList.updataAppsData(this.dataGridView_apps, clientInfo.appList);
-                
+                UIAppList.updataPhoneInfo(this.listBox_phone_info, clientInfo);
 
                 return;
             }

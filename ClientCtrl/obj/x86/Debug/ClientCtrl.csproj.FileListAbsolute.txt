@@ -12,7 +12,6 @@ E:\visual_studio_wark\work_space\ClientCtrl\ClientCtrl\bin\Debug\WindowsApplicat
 E:\visual_studio_wark\work_space\ClientCtrl\ClientCtrl\obj\x86\Debug\WindowsApplication.exe.manifest
 E:\visual_studio_wark\work_space\ClientCtrl\ClientCtrl\obj\x86\Debug\WindowsApplication.application
 E:\visual_studio_wark\work_space\ClientCtrl\ClientCtrl\bin\Debug\Newtonsoft.Json.dll
-E:\visual_studio_wark\work_space\my_work\CtrlsForWind\ClientCtrl\obj\x86\Debug\ClientCtrl.Form1.resources
 E:\visual_studio_wark\work_space\my_work\CtrlsForWind\ClientCtrl\obj\x86\Debug\ClientCtrl.Properties.Resources.resources
 E:\visual_studio_wark\work_space\my_work\CtrlsForWind\ClientCtrl\obj\x86\Debug\ClientCtrl.csproj.GenerateResource.Cache
 E:\visual_studio_wark\work_space\my_work\CtrlsForWind\ClientCtrl\obj\x86\Debug\ClientCtrl.csproj.CoreCompileInputs.cache
@@ -25,3 +24,5 @@ E:\visual_studio_wark\work_space\my_work\CtrlsForWind\ClientCtrl\bin\Debug\Windo
 E:\visual_studio_wark\work_space\my_work\CtrlsForWind\ClientCtrl\bin\Debug\WindowsApplication.pdb
 E:\visual_studio_wark\work_space\my_work\CtrlsForWind\ClientCtrl\obj\x86\Debug\WindowsApplication.exe.manifest
 E:\visual_studio_wark\work_space\my_work\CtrlsForWind\ClientCtrl\obj\x86\Debug\WindowsApplication.application
+E:\visual_studio_wark\work_space\my_work\CtrlsForWind\ClientCtrl\obj\x86\Debug\ClientCtrl.csprojResolveAssemblyReference.cache
+E:\visual_studio_wark\work_space\my_work\CtrlsForWind\ClientCtrl\obj\x86\Debug\ClientCtrl.FormMain.resources

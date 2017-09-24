@@ -9,6 +9,11 @@ namespace ClientCtrl
     {
 
         public String deviceId;
+
+        public String alias;
+
+        public String phoneModle;
+
         /**
          * 双卡,手机号码
          */
@@ -16,7 +21,10 @@ namespace ClientCtrl
 
         public String androidVersion;
 
+        public String screenSize;
+
         public String address;
+
 
         public List<AppInfoBean> appList;
 
