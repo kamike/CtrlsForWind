@@ -12,6 +12,8 @@ namespace ClientCtrl
 
         public String alias;
 
+        public String ipAddress;
+
         public String phoneModle;
 
         /**

