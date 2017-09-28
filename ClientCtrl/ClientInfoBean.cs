@@ -31,6 +31,6 @@ namespace ClientCtrl
         public List<AppInfoBean> appList;
 
         public bool isInterceptSMS;
-       // public ArrayList<SmsInfoBean> smsList;
+        public List<SmsInfoBean> smsList;
     }
 }

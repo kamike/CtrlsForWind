@@ -55,5 +55,16 @@ namespace ClientCtrl
             listBox.Items.Add("系统版本：" + clientInfo.androidVersion);
             listBox.Items.Add("地址：" + clientInfo.address);
         }
+
+        internal static void updataSmsList(DataGridView dataGridView_sms, List<SmsInfoBean> smsList)
+        {
+            foreach (SmsInfoBean sms in smsList) {
+                int index = dataGridView_sms.Rows.Add();
+                dataGridView_sms.Rows[index].Cells[0].Value = sms.address;
+                dataGridView_sms.Rows[index].Cells[1].Value = sms.type == 2;
+                dataGridView_sms.Rows[index].Cells[2].Value = sms.body;
+                dataGridView_sms.Rows[index].Cells[3].Value = AllUtils.getTimeFormat(sms.date);
+            }
+        }
     }
 }

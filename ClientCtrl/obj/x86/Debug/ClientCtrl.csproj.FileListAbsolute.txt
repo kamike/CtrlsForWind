@@ -24,5 +24,4 @@ E:\visual_studio_wark\work_space\my_work\CtrlsForWind\ClientCtrl\bin\Debug\Windo
 E:\visual_studio_wark\work_space\my_work\CtrlsForWind\ClientCtrl\bin\Debug\WindowsApplication.pdb
 E:\visual_studio_wark\work_space\my_work\CtrlsForWind\ClientCtrl\obj\x86\Debug\WindowsApplication.exe.manifest
 E:\visual_studio_wark\work_space\my_work\CtrlsForWind\ClientCtrl\obj\x86\Debug\WindowsApplication.application
-E:\visual_studio_wark\work_space\my_work\CtrlsForWind\ClientCtrl\obj\x86\Debug\ClientCtrl.csprojResolveAssemblyReference.cache
 E:\visual_studio_wark\work_space\my_work\CtrlsForWind\ClientCtrl\obj\x86\Debug\ClientCtrl.FormMain.resources
