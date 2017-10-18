@@ -25,3 +25,16 @@ E:\visual_studio_wark\work_space\my_work\CtrlsForWind\ClientCtrl\bin\Debug\Windo
 E:\visual_studio_wark\work_space\my_work\CtrlsForWind\ClientCtrl\obj\x86\Debug\WindowsApplication.exe.manifest
 E:\visual_studio_wark\work_space\my_work\CtrlsForWind\ClientCtrl\obj\x86\Debug\WindowsApplication.application
 E:\visual_studio_wark\work_space\my_work\CtrlsForWind\ClientCtrl\obj\x86\Debug\ClientCtrl.FormMain.resources
+D:\visual_studio_windows\workspace_\Ctrled\CtrlsForWind\ClientCtrl\bin\Debug\WindowsApplication.exe.config
+D:\visual_studio_windows\workspace_\Ctrled\CtrlsForWind\ClientCtrl\bin\Debug\WindowsApplication.exe.manifest
+D:\visual_studio_windows\workspace_\Ctrled\CtrlsForWind\ClientCtrl\bin\Debug\WindowsApplication.application
+D:\visual_studio_windows\workspace_\Ctrled\CtrlsForWind\ClientCtrl\bin\Debug\WindowsApplication.exe
+D:\visual_studio_windows\workspace_\Ctrled\CtrlsForWind\ClientCtrl\bin\Debug\WindowsApplication.pdb
+D:\visual_studio_windows\workspace_\Ctrled\CtrlsForWind\ClientCtrl\obj\x86\Debug\ClientCtrl.FormMain.resources
+D:\visual_studio_windows\workspace_\Ctrled\CtrlsForWind\ClientCtrl\obj\x86\Debug\ClientCtrl.Properties.Resources.resources
+D:\visual_studio_windows\workspace_\Ctrled\CtrlsForWind\ClientCtrl\obj\x86\Debug\ClientCtrl.csproj.GenerateResource.Cache
+D:\visual_studio_windows\workspace_\Ctrled\CtrlsForWind\ClientCtrl\obj\x86\Debug\ClientCtrl.csproj.CoreCompileInputs.cache
+D:\visual_studio_windows\workspace_\Ctrled\CtrlsForWind\ClientCtrl\obj\x86\Debug\WindowsApplication.exe.manifest
+D:\visual_studio_windows\workspace_\Ctrled\CtrlsForWind\ClientCtrl\obj\x86\Debug\WindowsApplication.application
+D:\visual_studio_windows\workspace_\Ctrled\CtrlsForWind\ClientCtrl\obj\x86\Debug\WindowsApplication.exe
+D:\visual_studio_windows\workspace_\Ctrled\CtrlsForWind\ClientCtrl\obj\x86\Debug\WindowsApplication.pdb

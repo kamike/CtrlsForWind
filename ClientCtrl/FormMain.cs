@@ -75,7 +75,10 @@ namespace ClientCtrl
         {
             Socket socketServer = obj as Socket;
 
-
+            byte[] uuidByte = new byte[36];
+            socketServer.Receive(uuidByte);
+            //每个请求都有唯一标识
+            String uuid= System.Text.UTF8Encoding.Default.GetString(uuidByte);
 
             byte[] headerByte = new byte[3];
             socketServer.Receive(headerByte);
@@ -122,7 +125,16 @@ namespace ClientCtrl
 
             //string words = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
             listBox_log.Items.Add("client:===img====");
-            this.pictureBox1.Image = new Bitmap(ms);
+            Bitmap bmp = null;
+            try
+            {
+                bmp = new Bitmap(ms);
+
+            }
+            catch (Exception e)
+            {
+            }
+            this.pictureBox1.Image = bmp;
             ms.Close();
 
 
