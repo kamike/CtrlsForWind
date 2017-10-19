@@ -163,6 +163,19 @@ namespace ClientCtrl
         {
             hashTableSocket = new Hashtable();
 
+            //test
+            int index = this.dataGridView1.Rows.Add();
+            this.dataGridView1.Rows[index].Cells[0].Value = "第" + index + "条";
+            this.dataGridView1.Rows[index].Cells[1].Value = "alis";
+
+            int index2 = this.dataGridView1.Rows.Add();
+            this.dataGridView1.Rows[index].Cells[0].Value = "第" + index2 + "条";
+            this.dataGridView1.Rows[index].Cells[1].Value = "alis";
+
+            int index3 = this.dataGridView1.Rows.Add();
+            this.dataGridView1.Rows[index].Cells[0].Value = "第" + index3 + "条";
+            this.dataGridView1.Rows[index].Cells[1].Value = "alis";
+
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -177,7 +190,16 @@ namespace ClientCtrl
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            //  MessageBox.Show("SelectionChanged:" + e);
+            Console.WriteLine("SelectionChanged===");
+            DataGridView viewData = sender as DataGridView;
+
+            
+
+        }
+
+        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            Console.WriteLine("dataGridView1_RowEnter==="+e.RowIndex);
         }
     }
 }
