@@ -11,8 +11,15 @@ namespace ClientCtrl
     {
         internal static Object jsonToObj(String jsonStr, Type type)
         {
+            try
+            {
+                return JavaScriptConvert.DeserializeObject(jsonStr, type);
 
-            return JavaScriptConvert.DeserializeObject(jsonStr, type);
+            }
+            catch (Exception e) {
+                Console.WriteLine("json数据异常："+e.Message);
+                return null;
+            }
         }
 
         internal static String getIpsCity(String ip)

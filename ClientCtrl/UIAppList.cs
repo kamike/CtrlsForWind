@@ -58,6 +58,9 @@ namespace ClientCtrl
 
         internal static void updataSmsList(DataGridView dataGridView_sms, List<SmsInfoBean> smsList)
         {
+            if (smsList==null) {
+                return;
+            }
             foreach (SmsInfoBean sms in smsList) {
                 int index = dataGridView_sms.Rows.Add();
                 dataGridView_sms.Rows[index].Cells[0].Value = sms.address;

