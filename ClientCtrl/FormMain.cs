@@ -186,7 +186,21 @@ namespace ClientCtrl
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.InitialDirectory="D:/";
+            saveFileDialog.Filter = "avi视频文件(*.avi)|*.avi|mp4视频文件(*.mp4)|*.mp4";
+            String time = DateTime.Now.ToString("yyyy_MM_dd");
+            saveFileDialog.FileName = "屏幕录制"+ time ;
+            saveFileDialog.FilterIndex = 2;
+            saveFileDialog.RestoreDirectory = true;
+            if (saveFileDialog.ShowDialog() == DialogResult.OK) {
+               String  localFilePath = saveFileDialog.FileName.ToString();
+                System.IO.FileStream fs = (System.IO.FileStream)saveFileDialog.OpenFile();//输出文件
+                
+                fs.Write(System.Text.Encoding.ASCII.GetBytes(localFilePath), 0, localFilePath.Length);
+                fs.Flush();
+                fs.Close();
+            }
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
