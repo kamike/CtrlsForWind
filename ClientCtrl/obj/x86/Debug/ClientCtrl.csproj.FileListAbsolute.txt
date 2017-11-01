@@ -51,3 +51,17 @@ E:\visual_studio_wark\work_space\my_work\gits\CtrlsForWind\ClientCtrl\obj\x86\De
 E:\visual_studio_wark\work_space\my_work\gits\CtrlsForWind\ClientCtrl\obj\x86\Debug\WindowsApplication.application
 E:\visual_studio_wark\work_space\my_work\gits\CtrlsForWind\ClientCtrl\obj\x86\Debug\WindowsApplication.exe
 E:\visual_studio_wark\work_space\my_work\gits\CtrlsForWind\ClientCtrl\obj\x86\Debug\WindowsApplication.pdb
+D:\visual_studio_windows\workspace_\222\CtrlsForWind\ClientCtrl\bin\Debug\WindowsApplication.exe.config
+D:\visual_studio_windows\workspace_\222\CtrlsForWind\ClientCtrl\bin\Debug\WindowsApplication.exe.manifest
+D:\visual_studio_windows\workspace_\222\CtrlsForWind\ClientCtrl\bin\Debug\WindowsApplication.application
+D:\visual_studio_windows\workspace_\222\CtrlsForWind\ClientCtrl\bin\Debug\WindowsApplication.exe
+D:\visual_studio_windows\workspace_\222\CtrlsForWind\ClientCtrl\bin\Debug\WindowsApplication.pdb
+D:\visual_studio_windows\workspace_\222\CtrlsForWind\ClientCtrl\obj\x86\Debug\ClientCtrl.csprojResolveAssemblyReference.cache
+D:\visual_studio_windows\workspace_\222\CtrlsForWind\ClientCtrl\obj\x86\Debug\ClientCtrl.FormMain.resources
+D:\visual_studio_windows\workspace_\222\CtrlsForWind\ClientCtrl\obj\x86\Debug\ClientCtrl.Properties.Resources.resources
+D:\visual_studio_windows\workspace_\222\CtrlsForWind\ClientCtrl\obj\x86\Debug\ClientCtrl.csproj.GenerateResource.Cache
+D:\visual_studio_windows\workspace_\222\CtrlsForWind\ClientCtrl\obj\x86\Debug\ClientCtrl.csproj.CoreCompileInputs.cache
+D:\visual_studio_windows\workspace_\222\CtrlsForWind\ClientCtrl\obj\x86\Debug\WindowsApplication.exe.manifest
+D:\visual_studio_windows\workspace_\222\CtrlsForWind\ClientCtrl\obj\x86\Debug\WindowsApplication.application
+D:\visual_studio_windows\workspace_\222\CtrlsForWind\ClientCtrl\obj\x86\Debug\WindowsApplication.exe
+D:\visual_studio_windows\workspace_\222\CtrlsForWind\ClientCtrl\obj\x86\Debug\WindowsApplication.pdb

@@ -64,12 +64,19 @@ namespace ClientCtrl
                 listBox_log.Items.Add("Accept======" + sendIpoint);
                 Console.WriteLine($"{sendIpoint}Connection");
                 //开启一个新线程不停接收消息
-                Thread thread = new Thread(ReciveContent);
-                thread.IsBackground = true;
-                thread.Start(client);
+                //Thread thread = new Thread(ReciveContent);
+                //thread.IsBackground = true;
+               // thread.Start(client);
+
+                DoReadMsg msg = new DoReadMsg(ReciveContent);
+                this.BeginInvoke(msg,client);
             }
 
         }
+        //委托
+        private delegate void DoReadMsg(Socket client);
+
+
         //接受客户端消息
         private void ReciveContent(Object obj)
         {
@@ -142,7 +149,7 @@ namespace ClientCtrl
                 UIAppList.updataSmsList(this.dataGridView_sms, clientInfo.smsList);
 
             }
-
+            
 
 
         }
