@@ -56,7 +56,6 @@ D:\visual_studio_windows\workspace_\222\CtrlsForWind\ClientCtrl\bin\Debug\Window
 D:\visual_studio_windows\workspace_\222\CtrlsForWind\ClientCtrl\bin\Debug\WindowsApplication.application
 D:\visual_studio_windows\workspace_\222\CtrlsForWind\ClientCtrl\bin\Debug\WindowsApplication.exe
 D:\visual_studio_windows\workspace_\222\CtrlsForWind\ClientCtrl\bin\Debug\WindowsApplication.pdb
-D:\visual_studio_windows\workspace_\222\CtrlsForWind\ClientCtrl\obj\x86\Debug\ClientCtrl.csprojResolveAssemblyReference.cache
 D:\visual_studio_windows\workspace_\222\CtrlsForWind\ClientCtrl\obj\x86\Debug\ClientCtrl.FormMain.resources
 D:\visual_studio_windows\workspace_\222\CtrlsForWind\ClientCtrl\obj\x86\Debug\ClientCtrl.Properties.Resources.resources
 D:\visual_studio_windows\workspace_\222\CtrlsForWind\ClientCtrl\obj\x86\Debug\ClientCtrl.csproj.GenerateResource.Cache

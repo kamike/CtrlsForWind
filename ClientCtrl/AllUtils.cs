@@ -27,18 +27,18 @@ namespace ClientCtrl
             String ipWeb = "http://ip.taobao.com/service/getIpInfo.php?ip=" + ip;
             try
             {
-                WebClient webClient = new WebClient();
-                webClient.Credentials = CredentialCache.DefaultCredentials;
-                byte[] data = webClient.DownloadData(ipWeb);
-                String pageHtml = Encoding.Default.GetString(data);
-                IpInfoBean info = jsonToObj(pageHtml, typeof(IpInfoBean)) as IpInfoBean;
-                if (info.code == 0)
-                {
-                    if (info.data != null)
-                    {
-                        return info.data.region + info.data.city;
-                    }
-                }
+                //WebClient webClient = new WebClient();
+                //webClient.Credentials = CredentialCache.DefaultCredentials;
+                //byte[] data = webClient.DownloadData(ipWeb);
+                //String pageHtml = Encoding.Default.GetString(data);
+                //IpInfoBean info = jsonToObj(pageHtml, typeof(IpInfoBean)) as IpInfoBean;
+                //if (info.code == 0)
+                //{
+                //    if (info.data != null)
+                //    {
+                //        return info.data.region + info.data.city;
+                //    }
+                //}
             }
             catch (Exception e)
             {

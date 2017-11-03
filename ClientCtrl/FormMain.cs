@@ -40,19 +40,17 @@ namespace ClientCtrl
             IPEndPoint point = new IPEndPoint(IPAddress.Any, IP_PORT);
             server.Bind(point);
             server.Listen(999);
-            Thread thread = new Thread(acceptClient);
-            thread.IsBackground = true;
-            thread.Start(server);
+            // Thread thread = new Thread(acceptClient);
+            //thread.IsBackground = true;
+            // thread.Start(server);
+
+            DoSocketAccept msg = new DoSocketAccept(acceptClient);
+            msg.BeginInvoke(server, null, null);
+
             listBox_log.Items.Add("=====init======");
 
         }
 
-        private string getIpAddress()
-        {
-            IPHostEntry ipHost = Dns.Resolve(Dns.GetHostName());
-            IPAddress ipAddr = ipHost.AddressList[0];
-            return ipAddr.ToString();
-        }
 
         private void acceptClient(Object obj)
         {
@@ -66,14 +64,28 @@ namespace ClientCtrl
                 //开启一个新线程不停接收消息
                 //Thread thread = new Thread(ReciveContent);
                 //thread.IsBackground = true;
-               // thread.Start(client);
+                // thread.Start(client);
 
                 DoReadMsg msg = new DoReadMsg(ReciveContent);
-                this.BeginInvoke(msg,client);
+                msg.BeginInvoke(client, null, null);
             }
 
         }
+        private void Test(Object obj)
+        {
+            Socket socketServer = obj as Socket;
+            byte[] headerByte = new byte[150];
+            while (true)
+            {
+                listBox_log.Items.Add("11111:");
+                Thread.Sleep(1000);
+            }
+        }
+
+
         //委托
+        private delegate void DoSocketAccept(Socket client);
+
         private delegate void DoReadMsg(Socket client);
 
 
@@ -86,6 +98,7 @@ namespace ClientCtrl
                 Console.WriteLine("ReciveContent:");
 
                 Socket socketServer = obj as Socket;
+
                 if (length == 0)
                 {
                     byte[] headerByte = new byte[15];
@@ -111,10 +124,10 @@ namespace ClientCtrl
                 sb.Append(UTF8Encoding.UTF8.GetChars(buffer, 0, len));
                 int end = 0;
 
-                while ((end=length - len) > 0)
+                while ((end = length - len) > 0)
                 {
                     length = end;
-                   // byte[] endBuffer = new byte[end];
+                    byte[] endBuffer = new byte[end];
                     len = socketServer.Receive(buffer);
                     sb.Append(UTF8Encoding.UTF8.GetChars(buffer, 0, len));
                     Console.WriteLine("读取了多长的数据？：" + len);
@@ -136,23 +149,34 @@ namespace ClientCtrl
                 ClientInfoBean clientInfo = AllUtils.jsonToObj(sb.ToString(), typeof(ClientInfoBean)) as ClientInfoBean;
                 if (clientInfo == null)
                 {
-                    Console.WriteLine("clientInfo==null==========");
+                    Console.WriteLine("数据格式有问题==========");
                     return;
                 }
                 //upData
                 addDataList(clientInfo, socketServer);
-                UIAppList.updataAppsData(this.dataGridView_apps, clientInfo.appList);
+               
+                    UIAppList.updataAppsData(this.dataGridView_apps, clientInfo.appList);
 
-                IPEndPoint clientipe = (IPEndPoint)socketServer.RemoteEndPoint;
-                clientInfo.ipAddress = clientipe.Address.ToString();
-                UIAppList.updataPhoneInfo(this.listBox_phone_info, clientInfo);
-                UIAppList.updataSmsList(this.dataGridView_sms, clientInfo.smsList);
+                 IPEndPoint clientipe = (IPEndPoint)socketServer.RemoteEndPoint;
+                //clientInfo.ipAddress = clientipe.Address.ToString();
+                 UIAppList.updataPhoneInfo(this.listBox_phone_info, clientInfo);
+                // UIAppList.updataSmsList(this.dataGridView_sms, clientInfo.smsList);
 
             }
-            
+
 
 
         }
+
+
+
+        private string getIpAddress()
+        {
+            IPHostEntry ipHost = Dns.Resolve(Dns.GetHostName());
+            IPAddress ipAddr = ipHost.AddressList[0];
+            return ipAddr.ToString();
+        }
+
         private Hashtable hashTableSocket;
         //添加一条记录到列表
         private void addDataList(ClientInfoBean clientInfo, Socket socket)
